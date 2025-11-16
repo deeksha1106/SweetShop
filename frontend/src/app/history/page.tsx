@@ -128,7 +128,7 @@ const PurchaseHistoryPage: React.FC = () => {
               </Card>
             </motion.div>
           </Grid>
-          
+
           <Grid item xs={12} md={4}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -148,7 +148,7 @@ const PurchaseHistoryPage: React.FC = () => {
               </Card>
             </motion.div>
           </Grid>
-          
+
           <Grid item xs={12} md={4}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -181,7 +181,7 @@ const PurchaseHistoryPage: React.FC = () => {
               <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
                 Purchase Details
               </Typography>
-              
+
               {purchases.length === 0 ? (
                 <Box sx={{ textAlign: 'center', py: 8 }}>
                   <ShoppingCart sx={{ fontSize: 64, color: 'text.secondary', mb: 2 }} />
@@ -206,12 +206,12 @@ const PurchaseHistoryPage: React.FC = () => {
                     </TableHead>
                     <TableBody>
                       {purchases.map((purchase, index) => (
-                        <motion.tr
+                        <TableRow
                           key={purchase.id}
+                          component={motion.tr}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.4, delay: index * 0.05 }}
-                          component={TableRow}
                           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                           <TableCell component="th" scope="row">
