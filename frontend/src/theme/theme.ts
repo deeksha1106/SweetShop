@@ -15,25 +15,13 @@ export const theme = createTheme({
       dark: '#A0522D',
       contrastText: '#FFFFFF',
     },
-    tertiary: {
-      main: '#CD853F',
-      light: '#F4A460',
-      dark: '#8B7355',
-      contrastText: '#2F1B14',
-    },
     background: {
       default: '#2F1B14',
       paper: '#3C2415',
     },
-    surface: {
-      main: '#4A2C17',
-      light: '#5D3317',
-      dark: '#2F1B14',
-    },
     text: {
       primary: '#F5E6D3',
       secondary: '#E6D3C1',
-      tertiary: '#D2B48C',
       disabled: '#A0522D',
     },
     error: {
@@ -57,12 +45,6 @@ export const theme = createTheme({
       dark: '#556B2F',
     },
     divider: 'rgba(245, 230, 211, 0.12)',
-    accent: {
-      cyan: '#20B2AA',
-      rose: '#F4A460',
-      violet: '#DDA0DD',
-      emerald: '#8FBC8F',
-    },
   },
   typography: {
     fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
@@ -231,58 +213,3 @@ export const theme = createTheme({
     },
   },
 });
-
-
-declare module '@mui/material/styles' {
-  interface Palette {
-    surface: {
-      main: string;
-      light: string;
-      dark: string;
-    };
-    tertiary: {
-      main: string;
-      light: string;
-      dark: string;
-      contrastText: string;
-    };
-    accent: {
-      cyan: string;
-      rose: string;
-      violet: string;
-      emerald: string;
-    };
-    text: {
-      primary: string;
-      secondary: string;
-      tertiary: string;
-      disabled: string;
-    };
-  }
-
-  interface PaletteOptions {
-    surface?: {
-      main: string;
-      light?: string;
-      dark?: string;
-    };
-    tertiary?: {
-      main: string;
-      light?: string;
-      dark?: string;
-      contrastText?: string;
-    };
-    accent?: {
-      cyan?: string;
-      rose?: string;
-      violet?: string;
-      emerald?: string;
-    };
-    text?: {
-      primary?: string;
-      secondary?: string;
-      tertiary?: string;
-      disabled?: string;
-    };
-  }
-}
