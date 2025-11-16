@@ -144,7 +144,7 @@ SweetShop/
    ```env
    NODE_ENV=development
    PORT=3001
-   JWT_SECRET=your-super-secret-jwt-key-here
+   JWT_SECRET=999999
    JWT_EXPIRES_IN=7d
    ADMIN_EMAIL=admin@sweetshop.com
    ADMIN_PASSWORD=admin123
