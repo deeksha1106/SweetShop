@@ -1,4 +1,61 @@
 # 🍭 Sweet Shop - Full Stack E-Commerce Application
+# ☁️ Deployment (Separate Frontend and Backend)
+
+Deploy the frontend (Next.js) to Vercel and the backend (Express) to Railway or any Node platform.
+
+### Backend (Railway or any Node host)
+- Repository path: `backend/`
+- Build command: none (SQLite, no build step)
+- Start command: `npm start`
+- Health check path: `/health`
+- Port env: `PORT` (Railway sets this automatically)
+
+Required environment variables:
+```
+PORT=3001                 # Railway will override
+NODE_ENV=production
+DB_PATH=./database/sweetshop.db  # Or a mounted volume path
+JWT_SECRET=your-super-secret
+JWT_EXPIRES_IN=7d
+ADMIN_EMAIL=admin@sweetshop.com
+ADMIN_PASSWORD=change-me
+# One of the following two (for CORS):
+# CORS_ORIGINS=https://your-frontend.vercel.app,https://staging-frontend.vercel.app
+# FRONTEND_URL=https://your-frontend.vercel.app
+```
+
+Notes for Railway:
+- Optionally add a persistent volume and set `DB_PATH` to that mount, e.g. `/data/sweetshop.db`.
+- Ensure `CORS_ORIGINS` includes your Vercel domain.
+
+### Frontend (Vercel)
+- Repository path: `frontend/`
+- Framework preset: Next.js
+- Build command: `npm run build`
+- Output: `.next`
+
+Required environment variables:
+```
+NEXT_PUBLIC_API_URL=https://<your-backend-domain>/api
+```
+
+Local development examples:
+```
+# frontend/.env.local
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
+
+# backend/.env
+PORT=3001
+NODE_ENV=development
+DB_PATH=./database/sweetshop.db
+# and the rest from backend/.env.example
+```
+
+After deploying:
+- Verify backend health: `https://<your-backend-domain>/health`
+- Verify API base: `https://<your-backend-domain>/api`
+- Update Vercel environment variable `NEXT_PUBLIC_API_URL` to point to the backend `/api` URL.
+
 
 > A modern, premium sweet shop e-commerce platform built with cutting-edge technologies, featuring a robust Node.js/Express backend with SQLite database and an elegant Next.js frontend with Material-UI and Three.js animations.
 

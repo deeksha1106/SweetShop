@@ -35,10 +35,26 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // CORS configuration
+const parseOrigins = () => {
+  const fromEnv = process.env.CORS_ORIGINS || process.env.FRONTEND_URL || '';
+  const list = fromEnv
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean);
+
+  if (list.length > 0) return list;
+  return ['http://localhost:3000', 'http://127.0.0.1:3000'];
+};
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-frontend-domain.com']
-    : ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001', 'http://127.0.0.1:3002'],
+  origin: (origin, callback) => {
+    const allowed = parseOrigins();
+    if (!origin) return callback(null, true);
+    if (allowed.indexOf(origin) !== -1) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
