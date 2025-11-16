@@ -248,7 +248,7 @@ const PurchaseHistoryPage: React.FC = () => {
                               })}
                             </Typography>
                           </TableCell>
-                        </motion.tr>
+                        </TableRow>
                       ))}
                     </TableBody>
                   </Table>
