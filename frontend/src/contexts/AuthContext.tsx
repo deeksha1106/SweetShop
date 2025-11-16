@@ -44,9 +44,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (savedToken) {
         setToken(savedToken);
         try {
-          const response = await authApi.getProfile(savedToken);
-          if (response.success) {
-            setUser(response.data.user);
+          const result: any = await authApi.getProfile(savedToken);
+          if (result?.success) {
+            setUser(result.data.user);
           } else {
             // Invalid token, remove it
             Cookies.remove('auth_token');
@@ -67,17 +67,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
       setLoading(true);
-      const response = await authApi.login(email, password);
-      
-      if (response.success) {
-        const { user: userData, token: userToken } = response.data;
+      const result: any = await authApi.login(email, password);
+
+      if (result?.success) {
+        const { user: userData, token: userToken } = result.data;
         setUser(userData);
         setToken(userToken);
         Cookies.set('auth_token', userToken, { expires: 1 }); // 1 day
         toast.success(`Welcome back, ${userData.email}!`);
         return true;
       } else {
-        toast.error(response.message || 'Login failed');
+        toast.error(result?.message || 'Login failed');
         return false;
       }
     } catch (error: any) {
@@ -92,17 +92,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const register = async (email: string, password: string, role?: string): Promise<boolean> => {
     try {
       setLoading(true);
-      const response = await authApi.register(email, password, role);
-      
-      if (response.success) {
-        const { user: userData, token: userToken } = response.data;
+      const result: any = await authApi.register(email, password, role);
+
+      if (result?.success) {
+        const { user: userData, token: userToken } = result.data;
         setUser(userData);
         setToken(userToken);
         Cookies.set('auth_token', userToken, { expires: 1 }); // 1 day
         toast.success(`Welcome to Sweet Shop, ${userData.email}!`);
         return true;
       } else {
-        toast.error(response.message || 'Registration failed');
+        toast.error(result?.message || 'Registration failed');
         return false;
       }
     } catch (error: any) {
