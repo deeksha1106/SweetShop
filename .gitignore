@@ -1,0 +1,47 @@
+# Root .gitignore for SweetShop
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+logs/
+
+# Coverage & build artifacts
+coverage/
+dist/
+build/
+tmp/
+temp/
+.cache/
+.eslintcache
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Editors & OS
+.vscode/
+.idea/
+.DS_Store
+
+# Frontend/hosting frameworks
+.next/
+out/
+.vercel/
+.netlify/
+.turbo/
+.parcel-cache/
+.pnpm-store/
+
+# Backend database files (SQLite)
+backend/database/*.db
+backend/database/*.sqlite
+backend/database/*.sqlite3
+
+# Project-specific coverage (explicit paths)
+frontend/coverage/
+backend/coverage/

@@ -1,0 +1,31 @@
+# Frontend .gitignore (Next.js)
+
+# Node.js
+node_modules/
+*.log
+logs/
+
+# Environment
+.env
+.env.*
+!.env.local.example
+!.env.example
+
+# Next.js
+.next/
+out/
+
+# Build & tooling
+coverage/
+dist/
+build/
+.turbo/
+.parcel-cache/
+.pnpm-store/
+.eslintcache
+
+# Editors & OS
+.vscode/
+.idea/
+.DS_Store
+.vercel/
