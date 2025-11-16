@@ -285,7 +285,7 @@ const AdminDashboard: React.FC = () => {
               </Card>
             </motion.div>
           </Grid>
-          
+
           <Grid item xs={12} sm={6} md={3}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -305,7 +305,7 @@ const AdminDashboard: React.FC = () => {
               </Card>
             </motion.div>
           </Grid>
-          
+
           <Grid item xs={12} sm={6} md={3}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -325,7 +325,7 @@ const AdminDashboard: React.FC = () => {
               </Card>
             </motion.div>
           </Grid>
-          
+
           <Grid item xs={12} sm={6} md={3}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -373,7 +373,7 @@ const AdminDashboard: React.FC = () => {
                   Add Sweet
                 </Button>
               </Box>
-              
+
               <TableContainer component={Paper} elevation={0}>
                 <Table>
                   <TableHead>
@@ -408,8 +408,8 @@ const AdminDashboard: React.FC = () => {
                         <TableCell align="center">
                           <Typography
                             variant="body2"
-                            color={sweet.quantity === 0 ? 'error.main' : 
-                                   sweet.quantity <= 10 ? 'warning.main' : 'success.main'}
+                            color={sweet.quantity === 0 ? 'error.main' :
+                              sweet.quantity <= 10 ? 'warning.main' : 'success.main'}
                             fontWeight="bold"
                           >
                             {sweet.quantity}
@@ -419,12 +419,12 @@ const AdminDashboard: React.FC = () => {
                           <Chip
                             label={
                               sweet.quantity === 0 ? 'Out of Stock' :
-                              sweet.quantity <= 10 ? 'Low Stock' : 'In Stock'
+                                sweet.quantity <= 10 ? 'Low Stock' : 'In Stock'
                             }
                             size="small"
                             color={
                               sweet.quantity === 0 ? 'error' :
-                              sweet.quantity <= 10 ? 'warning' : 'success'
+                                sweet.quantity <= 10 ? 'warning' : 'success'
                             }
                           />
                         </TableCell>
@@ -492,20 +492,20 @@ const AdminDashboard: React.FC = () => {
               sx={{ mb: 2 }}
             />
             <TextField
-              {...register('price', { 
+              {...register('price', {
                 required: 'Price is required',
                 min: { value: 0, message: 'Price must be positive' }
               })}
               fullWidth
               label="Price"
               type="number"
-              step="0.01"
+              inputProps={{ step: '0.01' }}
               error={!!errors.price}
               helperText={errors.price?.message}
               sx={{ mb: 2 }}
             />
             <TextField
-              {...register('quantity', { 
+              {...register('quantity', {
                 required: 'Quantity is required',
                 min: { value: 0, message: 'Quantity must be non-negative' }
               })}
@@ -598,3 +598,4 @@ const AdminDashboard: React.FC = () => {
 };
 
 export default AdminDashboard;
+
